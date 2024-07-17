@@ -10,7 +10,6 @@
 , ...
 }: {
   imports = [
-    wsl.nixosModules.wslimports
     outputs.nixosModules.default
   ];
 
