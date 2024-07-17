@@ -31,7 +31,6 @@
     bundles.general-desktop.enable = true;
     bundles.users.enable = true;
     power-management.enable = true;
-    sops.enable = false;
     autologin.user = "evan";
 
     virtualisation.enable = lib.mkDefaut true;
