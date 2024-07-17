@@ -64,10 +64,6 @@
     FLAKE = "${config.home.homeDirectory}/nixconf";
   };
 
-
-  # time zone and locale
-  time.timeZone = "America/New_York";
-
   myHomeManager.impermanence.data.directories = [
     ".ssh"
   ];
