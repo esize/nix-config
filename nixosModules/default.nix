@@ -9,6 +9,8 @@
 }: let
   cfg = config.myNixOS;
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
   # Taking all modules in ./features and adding enables to them
   features =
     myLib.extendModules
