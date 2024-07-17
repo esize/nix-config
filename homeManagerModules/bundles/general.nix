@@ -1,9 +1,8 @@
-{
-  pkgs,
-  config,
-  lib,
-  inputs,
-  ...
+{ pkgs
+, config
+, lib
+, inputs
+, ...
 }: {
   nixpkgs = {
     config = {
@@ -13,9 +12,7 @@
   };
 
   myHomeManager.zsh.enable = lib.mkDefault true;
-  myHomeManager.fish.enable = lib.mkDefault true;
   myHomeManager.lf.enable = lib.mkDefault true;
-  myHomeManager.yazi.enable = lib.mkDefault true;
   myHomeManager.nix-extra.enable = lib.mkDefault true;
   myHomeManager.btop.enable = lib.mkDefault true;
   myHomeManager.nix-direnv.enable = lib.mkDefault true;

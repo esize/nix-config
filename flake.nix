@@ -8,6 +8,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xremap-flake.url = "github:xremap/nix-flake";
 
     home-manager = {
@@ -83,7 +88,7 @@
         # ===================== NixOS Configurations ===================== #
 
         laptop = mkSystem ./hosts/laptop/configuration.nix;
-        work = mkSystem ./hosts/work/configuration.nix;
+        wsl = mkSystem ./hosts/wsl/configuration.nix;
         vps = mkSystem ./hosts/vps/configuration.nix;
         liveiso = mkSystem ./hosts/liveiso/configuration.nix;
       };
@@ -92,7 +97,7 @@
         # ================ Maintained home configurations ================ #
 
         "evan@laptop" = mkHome "x86_64-linux" ./hosts/laptop/home.nix;
-        "evan@work" = mkHome "x86_64-linux" ./hosts/work/home.nix;
+        "evan@wsl" = mkHome "x86_64-linux" ./hosts/wsl/home.nix;
 
         # ========================= Discontinued ========================= #
         # This one doesn't work. Left it in case I ever want to use it again
