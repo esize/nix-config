@@ -22,6 +22,7 @@ rec {
       modules = [
         config
         outputs.nixosModules.default
+        outputs.agenix.nixosModules.default
       ];
     };
 
@@ -34,7 +35,6 @@ rec {
       modules = [
         config
         outputs.homeManagerModules.default
-        outputs.agenix.nixosModules.default
       ];
     };
 
