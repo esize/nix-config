@@ -1,9 +1,8 @@
-{
-  inputs,
-  outputs,
-  pkgs,
-  lib,
-  ...
+{ inputs
+, outputs
+, pkgs
+, lib
+, ...
 }: {
   myHomeManager = {
     bundles.general.enable = true;
@@ -14,14 +13,14 @@
         width = 2560;
         height = 1440;
         refreshRate = 164.;
-        x = 0;
+          x = 0;
         y = 0;
       };
       "HDMI-A-1" = {
         width = 1920;
         height = 1080;
         refreshRate = 60.;
-        x = 2560;
+          x = 2560;
         y = 430;
       };
     };
@@ -36,8 +35,8 @@
 
   home = {
     stateVersion = "22.11";
-    homeDirectory = lib.mkDefault "/home/yurii";
-    username = "yurii";
+    homeDirectory = lib.mkDefault "/home/evan";
+    username = "evan";
 
     packages = with pkgs; [
       bottles
