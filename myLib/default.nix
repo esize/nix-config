@@ -1,4 +1,4 @@
-{ inputs }:
+{ inputs, agenix }:
 let
   myLib = (import ./default.nix) { inherit inputs; };
   outputs = inputs.self.outputs;

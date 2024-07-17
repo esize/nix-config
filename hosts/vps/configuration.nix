@@ -1,11 +1,12 @@
 { pkgs
 , inputs
 , outputs
+, agenix
 , ...
 }: {
   imports = [
     outputs.nixosModules.default
-
+    agenix.nixosModules.default
     ./hardware-configuration.nix
   ];
 

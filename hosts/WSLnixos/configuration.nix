@@ -7,10 +7,12 @@
 , myLib
 , hm
 , wsl
+, agenix
 , ...
 }: {
   imports = [
     wsl.nixosModules.wslimports
+    agenix.nixosModules.default
     outputs.nixosModules.default
   ];
 
