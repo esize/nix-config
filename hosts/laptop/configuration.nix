@@ -5,7 +5,6 @@
 , outputs
 , system
 , myLib
-, agenix
 , ...
 }: {
   imports =
@@ -14,7 +13,6 @@
       (import ./disko.nix { device = "/dev/nvme1n1"; })
       inputs.disko.nixosModules.default
       "${inputs.nixpkgs-wivrn}/nixos/modules/services/video/wivrn.nix"
-      agenix.nixosModules.default
     ]
     ++ (myLib.filesIn ./included);
 

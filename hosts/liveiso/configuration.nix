@@ -2,11 +2,9 @@
 , lib
 , modulesPath
 , outputs
-, agenix
 , ...
 }: {
   imports = [
-    agenix.nixosModules.default
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
   ];
 

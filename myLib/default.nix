@@ -22,7 +22,7 @@ rec {
       modules = [
         config
         outputs.nixosModules.default
-        outputs.agenix.nixosModules.default
+        agenix.nixosModules.default
       ];
     };
 
