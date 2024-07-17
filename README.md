@@ -1,0 +1,2 @@
+# Evan's Nix Config
+
