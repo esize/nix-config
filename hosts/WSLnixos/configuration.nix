@@ -6,7 +6,6 @@
 , system
 , myLib
 , hm
-, wsl
 , ...
 }: {
   imports = [
@@ -26,7 +25,7 @@
     };
   };
 
-  wsl = {
+  inputs.wsl = {
     enable = true;
     automountPath = "/mnt";
     defaultUser = "evan";
