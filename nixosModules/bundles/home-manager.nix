@@ -31,6 +31,12 @@ in
         NixOS user settings
       '';
     };
+
+    hashedPasswordFile = lib.mkOption {
+      type = lib.types.path;
+      default = config.age.secrets;
+      description = "secrets";
+    };
   };
 
   config = {

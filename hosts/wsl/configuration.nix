@@ -10,7 +10,8 @@
 , ...
 }: {
   imports = [
-    wsl.nixosModules.wsl
+    wsl.nixosModules.wslimports
+    outputs.nixosModules.default
   ];
 
   myNixOS = {

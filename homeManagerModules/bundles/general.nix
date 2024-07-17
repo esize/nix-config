@@ -6,7 +6,7 @@
 }: {
   nixpkgs = {
     config = {
-      # allowUnfree = true;
+      allowUnfree = true;
       experimental-features = "nix-command flakes";
     };
   };
@@ -32,14 +32,10 @@
     nil
     lua-language-server
 
-    pistol
     file
     git
-    p7zip
     unzip
     zip
-    libqalculate
-    imagemagick
     killall
     neovim
 
@@ -67,6 +63,11 @@
   home.sessionVariables = {
     FLAKE = "${config.home.homeDirectory}/nixconf";
   };
+
+
+  # time zone and locale
+  time.timeZone = "America/New_York";
+  i18n.defaultLocale = "en_US.UTF-8";
 
   myHomeManager.impermanence.data.directories = [
     ".ssh"

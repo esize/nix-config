@@ -17,7 +17,7 @@
       "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+          extraGroups = [ "networkmanager" "wheel" ];
         };
       };
     };
