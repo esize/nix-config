@@ -1,13 +1,12 @@
-{
-  pkgs,
-  inputs,
-  config,
-  lib,
-  ...
+{ pkgs
+, inputs
+, config
+, lib
+, ...
 }: {
   programs.firefox = {
     enable = true;
-    profiles.yurii = {
+    profiles.evan = {
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
         bitwarden
         ublock-origin
@@ -40,7 +39,7 @@
             }
           ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@n"];
+          definedAliases = [ "@n" ];
         };
       };
 

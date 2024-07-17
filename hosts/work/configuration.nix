@@ -1,13 +1,12 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  outputs,
-  system,
-  myLib,
-  hm,
-  ...
+{ config
+, pkgs
+, lib
+, inputs
+, outputs
+, system
+, myLib
+, hm
+, ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -20,10 +19,10 @@
 
     hyprland.enable = true;
     home-users = {
-      "yurii" = {
+      "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = ["docker" "libvirtd" "networkmanager" "wheel" "adbusers"];
+          extraGroups = [ "docker" "libvirtd" "networkmanager" "wheel" "adbusers" ];
         };
       };
     };
@@ -55,7 +54,7 @@
   services.xserver = {
     enable = true;
     # videoDrivers = ["nvidia"];
-    videoDrivers = ["amdgpu"];
+    videoDrivers = [ "amdgpu" ];
     layout = "us";
     xkbVariant = "";
     libinput.enable = true;
@@ -94,13 +93,13 @@
     vulkan-tools
   ];
 
-  networking.firewall.allowedTCPPorts = [50000 53962 51319 32771 40668 54156 8080 80 50922 5000 3000];
-  networking.firewall.allowedUDPPorts = [50000 56787 51319 32771 40668 38396 46223 8080 80 50922 5000 3000];
+  networking.firewall.allowedTCPPorts = [ 50000 53962 51319 32771 40668 54156 8080 80 50922 5000 3000 ];
+  networking.firewall.allowedUDPPorts = [ 50000 56787 51319 32771 40668 38396 46223 8080 80 50922 5000 3000 ];
   networking.firewall.extraCommands = ''iptables -t raw -A OUTPUT -p udp -m udp --dport 137 -j CT --helper netbios-ns'';
   networking.firewall.enable = false;
   services.samba-wsdd.enable = true;
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.enable = true;
 
   programs.adb.enable = true;
@@ -135,7 +134,7 @@
   fileSystems."/mnt/nvme" = {
     device = "/dev/nvme0n1p3";
     fsType = "ntfs-3g";
-    options = ["rw" "uid=1000"];
+    options = [ "rw" "uid=1000" ];
   };
 
   services.openssh.enable = true;

@@ -1,9 +1,8 @@
-{
-  inputs,
-  outputs,
-  pkgs,
-  lib,
-  ...
+{ inputs
+, outputs
+, pkgs
+, lib
+, ...
 }: {
   myHomeManager = {
     bundles.general.enable = true;
@@ -11,9 +10,9 @@
 
   home = {
     stateVersion = "22.11";
-    homeDirectory = lib.mkDefault "/home/yurii";
-    username = "yurii";
+    homeDirectory = lib.mkDefault "/home/evan";
+    username = "evan";
 
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 }

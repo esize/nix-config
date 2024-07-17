@@ -1,17 +1,16 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  outputs,
-  system,
-  myLib,
-  ...
+{ config
+, pkgs
+, lib
+, inputs
+, outputs
+, system
+, myLib
+, ...
 }: {
   imports =
     [
       ./hardware-configuration.nix
-      (import ./disko.nix {device = "/dev/nvme1n1";})
+      (import ./disko.nix { device = "/dev/nvme1n1"; })
       inputs.disko.nixosModules.default
       "${inputs.nixpkgs-wivrn}/nixos/modules/services/video/wivrn.nix"
     ]
@@ -24,8 +23,8 @@
 
     supportedFilesystems.ntfs = true;
 
-    kernelParams = ["quiet" "udev.log_level=3" "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1"];
-    kernelModules = ["coretemp" "cpuid" "v4l2loopback"];
+    kernelParams = [ "quiet" "udev.log_level=3" "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1" ];
+    kernelModules = [ "coretemp" "cpuid" "v4l2loopback" ];
   };
 
   myNixOS = {
@@ -33,17 +32,17 @@
     bundles.users.enable = true;
     power-management.enable = true;
     sops.enable = false;
-    autologin.user = "yurii";
+    autologin.user = "evan";
 
     virtualisation.enable = lib.mkDefaut true;
 
     hyprland.enable = true;
 
     home-users = {
-      "yurii" = {
+      "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = ["networkmanager" "wheel" "libvirtd" "docker" "adbusers" "openrazer"];
+          extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "adbusers" "openrazer" ];
         };
       };
     };
@@ -51,7 +50,7 @@
     impermanence.enable = true;
     impermanence.nukeRoot.enable = true;
   };
-  users.users.yurii.hashedPasswordFile = "/persist/passwd";
+  users.users.evan.hashedPasswordFile = "/persist/passwd";
 
   # programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   security.polkit.enable = true;
@@ -111,9 +110,8 @@
     package =
       (import inputs.nixpkgs-wivrn {
         system = "${pkgs.system}";
-        config = {allowUnfree = true;};
-      })
-      .wivrn;
+        config = { allowUnfree = true; };
+      }).wivrn;
     # package = inputs.nixpkgs-wivrn.legacyPackages.${pkgs.system}.wivrn;
     enable = true;
     openFirewall = true;
@@ -129,7 +127,7 @@
     # inputs.nixpkgs-wivrn.legacyPackages.${pkgs.system}.wivrn
   ];
 
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.enable = true;
 
   system.stateVersion = "23.11";

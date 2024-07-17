@@ -1,8 +1,7 @@
-{
-  pkgs,
-  lib,
-  modulesPath,
-  ...
+{ pkgs
+, lib
+, modulesPath
+, ...
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
@@ -15,10 +14,10 @@
     stylix.enable = lib.mkDefault true;
 
     home-users = {
-      "yurii" = {
+      "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = ["networkmanager" "wheel" "adbusers"];
+          extraGroups = [ "networkmanager" "wheel" "adbusers" ];
         };
       };
     };
@@ -34,5 +33,5 @@
     git
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

@@ -1,7 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
+{ inputs
+, pkgs
+, ...
 }:
 # ================================================================ #
 # =                           OUTDATED                           = #
@@ -13,8 +12,8 @@
   ];
 
   home = {
-    username = "yurii";
+    username = "evan";
     stateVersion = "22.11";
-    homeDirectory = "/Users/yurii/";
+    homeDirectory = "/Users/evan/";
   };
 }

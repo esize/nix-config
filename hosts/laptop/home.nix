@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  pkgs,
-  lib,
-  ...
+{ inputs
+, outputs
+, pkgs
+, lib
+, ...
 }: {
-  imports = [outputs.homeManagerModules.default];
+  imports = [ outputs.homeManagerModules.default ];
 
-  programs.git.userName = "yurii";
-  programs.git.userEmail = "yurii@goxore.com";
+  programs.git.userName = "evan";
+  programs.git.userEmail = "evan@wool.homes";
 
   myHomeManager.impermanence.data.directories = [
     "nixconf"
@@ -36,36 +35,38 @@
     pipewire.enable = true;
     tenacity.enable = true;
 
-    monitors = let
-      edp = {
-        width = 1920;
-        height = 1080;
-        refreshRate = 144.;
-        x = 760;
-        y = 1440;
+    monitors =
+      let
+        edp = {
+          width = 1920;
+          height = 1080;
+          refreshRate = 144.;
+            x = 760;
+          y = 1440;
+        };
+      in
+      {
+        "eDP-1" = edp;
+        "eDP-2" = edp;
+        "DP-2" = {
+          width = 3440;
+          height = 1440;
+          refreshRate = 144.;
+            x = 0;
+          y = 0;
+        };
       };
-    in {
-      "eDP-1" = edp;
-      "eDP-2" = edp;
-      "DP-2" = {
-        width = 3440;
-        height = 1440;
-        refreshRate = 144.;
-        x = 0;
-        y = 0;
-      };
-    };
 
     workspaces = {
       "2" = {
         monitorId = 0;
         autostart = with pkgs; [
-         (lib.getExe firefox)
+          (lib.getExe firefox)
         ];
       };
       "10" = {
         monitorId = 1;
-        autostart =  with pkgs; [
+        autostart = with pkgs; [
           (lib.getExe telegram-desktop)
           (lib.getExe vesktop)
         ];
@@ -79,8 +80,8 @@
   };
 
   home = {
-    username = "yurii";
-    homeDirectory = lib.mkDefault "/home/yurii";
+    username = "evan";
+    homeDirectory = lib.mkDefault "/home/evan";
     stateVersion = "22.11";
 
     packages = with pkgs; [

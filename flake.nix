@@ -3,7 +3,7 @@
   # =                           WELCOME!                           = #
   # ================================================================ #
 
-  description = "Yurii's NixOS configuration";
+  description = "Evan's NixOS configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -72,11 +72,12 @@
 
   };
 
-  outputs = {...} @ inputs: let
-    # super simple boilerplate-reducing
-    # lib with a bunch of functions
-    myLib = import ./myLib/default.nix {inherit inputs;};
-  in
+  outputs = { ... } @ inputs:
+    let
+      # super simple boilerplate-reducing
+      # lib with a bunch of functions
+      myLib = import ./myLib/default.nix { inherit inputs; };
+    in
     with myLib; {
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #
@@ -90,13 +91,13 @@
       homeConfigurations = {
         # ================ Maintained home configurations ================ #
 
-        "yurii@laptop" = mkHome "x86_64-linux" ./hosts/laptop/home.nix;
-        "yurii@work" = mkHome "x86_64-linux" ./hosts/work/home.nix;
+        "evan@laptop" = mkHome "x86_64-linux" ./hosts/laptop/home.nix;
+        "evan@work" = mkHome "x86_64-linux" ./hosts/work/home.nix;
 
         # ========================= Discontinued ========================= #
         # This one doesn't work. Left it in case I ever want to use it again
 
-        "yurii@osxvm" = mkHome "x86_64-darwin" ./hosts/osxvm/home.nix;
+        "evan@osxvm" = mkHome "x86_64-darwin" ./hosts/osxvm/home.nix;
       };
 
       homeManagerModules.default = ./homeManagerModules;

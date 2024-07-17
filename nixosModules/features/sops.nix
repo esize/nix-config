@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  config,
-  ...
+{ pkgs
+, inputs
+, config
+, ...
 }: {
   imports = [
     inputs.sops-nix.nixosModules.sops
@@ -10,15 +9,15 @@
 
   sops.defaultSopsFile = ./../../hosts/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
-  # sops.age.sshKeyPaths = [ "/home/yurii/.ssh/testkey" ];
+  # sops.age.sshKeyPaths = [ "/home/evan/.ssh/testkey" ];
   sops.age.generateKey = true;
-  sops.age.keyFile = "/home/yurii/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/evan/.config/sops/age/keys.txt";
 
   sops.secrets.example-key = {
-    owner = config.users.users.yurii.name;
+    owner = config.users.users.evan.name;
   };
   sops.secrets."myservice/my_subdir/my_secret" = {
-    # owner = "yurii";
+    # owner = "evan";
     owner = "sometestservice";
   };
 
@@ -44,5 +43,5 @@
     isSystemUser = true;
     group = "sometestservice";
   };
-  users.groups.sometestservice = {};
+  users.groups.sometestservice = { };
 }
