@@ -67,7 +67,6 @@
 
   # time zone and locale
   time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
 
   myHomeManager.impermanence.data.directories = [
     ".ssh"
