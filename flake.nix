@@ -89,7 +89,7 @@
         # ===================== NixOS Configurations ===================== #
 
         laptop = mkSystem ./hosts/laptop/configuration.nix;
-        wsl-nixos = mkSystem ./hosts/wsl-nixos/configuration.nix;
+        WSLnixos = mkSystem ./hosts/WSLnixos/configuration.nix;
         vps = mkSystem ./hosts/vps/configuration.nix;
         liveiso = mkSystem ./hosts/liveiso/configuration.nix;
       };
@@ -98,7 +98,7 @@
         # ================ Maintained home configurations ================ #
 
         "evan@laptop" = mkHome "x86_64-linux" ./hosts/laptop/home.nix;
-        "evan@wsl-nixos" = mkHome "x86_64-linux" ./hosts/wsl-nixos/home.nix;
+        "evan@WSLnixos" = mkHome "x86_64-linux" ./hosts/WSLnixos/home.nix;
 
         # ========================= Discontinued ========================= #
         # This one doesn't work. Left it in case I ever want to use it again
