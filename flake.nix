@@ -89,7 +89,7 @@
         # ===================== NixOS Configurations ===================== #
 
         laptop = mkSystem ./hosts/laptop/configuration.nix;
-        wsl = mkSystem ./hosts/wsl/configuration.nix;
+        wsl-nix = mkSystem ./hosts/wsl-nix/configuration.nix;
         vps = mkSystem ./hosts/vps/configuration.nix;
         liveiso = mkSystem ./hosts/liveiso/configuration.nix;
       };
