@@ -6,11 +6,13 @@
 , system
 , myLib
 , hm
+, wsl
 , ...
 }: {
   imports = [
     ./hardware-configuration.nix
     outputs.nixosModules.default
+    wsl
   ];
 
   myNixOS = {
@@ -25,7 +27,7 @@
     };
   };
 
-  inputs.wsl = {
+  wsl = {
     enable = true;
     automountPath = "/mnt";
     defaultUser = "evan";
