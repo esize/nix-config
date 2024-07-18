@@ -42,7 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     prism = {
       url = "github:IogaMaster/prism";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -75,15 +74,13 @@
       url = "github:coffeeispower/woomer";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = { ... } @ inputs:
-    let
-      # super simple boilerplate-reducing
-      # lib with a bunch of functions
-      myLib = import ./myLib/default.nix { inherit inputs; };
-    in
+  outputs = {...} @ inputs: let
+    # super simple boilerplate-reducing
+    # lib with a bunch of functions
+    myLib = import ./myLib/default.nix {inherit inputs;};
+  in
     with myLib; {
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #

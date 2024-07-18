@@ -24,22 +24,23 @@ let
     user = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOBtq7Bw1OCa7oB34Oa7Gz4U8d2U6EneuRC28Ep7N1Ud";
   };
 
-  hosts = [ desktop-wsl-ubuntu portainer-server lab-server ];
+  hosts = [desktop-wsl-ubuntu portainer-server lab-server];
 
   getUser = host: host.user;
   getRoot = host: host.root;
-  getAllKeysForHost = host: [ (getUser host) (getRoot host) ];
+  getAllKeysForHost = host: [(getUser host) (getRoot host)];
 
-  knownUsers = (builtins.map getUser hosts);
+  knownUsers = builtins.map getUser hosts;
   users = githubKeys ++ knownUsers;
-  systems = (builtins.map getRoot hosts);
+  systems = builtins.map getRoot hosts;
   allKeys = users ++ systems;
 
-  serverSecretKeys = knownUsers ++ [
-    (getRoot portainer-server)
-  ]; # allow all user keys to modify the thicc server secrets
-in
-{
+  serverSecretKeys =
+    knownUsers
+    ++ [
+      (getRoot portainer-server)
+    ]; # allow all user keys to modify the thicc server secrets
+in {
   "evan-pass.age".publicKeys = allKeys;
   "mopidy-spotify.age".publicKeys = allKeys;
 

@@ -1,13 +1,14 @@
-{ config
-, pkgs
-, lib
-, inputs
-, outputs
-, system
-, myLib
-, hm
-, wsl
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  system,
+  myLib,
+  hm,
+  wsl,
+  ...
 }: {
   imports = [
     ./hardware-configuration.nix
@@ -21,7 +22,7 @@
       "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = [ "docker" "libvirtd" "networkmanager" "wheel" ];
+          extraGroups = ["docker" "libvirtd" "networkmanager" "wheel"];
         };
       };
     };
@@ -34,11 +35,10 @@
     startMenuLaunchers = true;
   };
 
-
   # vscode workaround
   systemd.user = {
     paths.vscode-remote-workaround = {
-      wantedBy = [ "default.target" ];
+      wantedBy = ["default.target"];
       pathConfig.PathChanged = "%h/.vscode-server/bin";
     };
 

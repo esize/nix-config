@@ -1,14 +1,14 @@
-{ inputs
-, outputs
-, pkgs
-, lib
-, ...
+{
+  inputs,
+  outputs,
+  pkgs,
+  lib,
+  ...
 }: {
-  imports = [ outputs.homeManagerModules.default ];
+  imports = [outputs.homeManagerModules.default];
 
   myHomeManager = {
     bundles.general.enable = true;
-
   };
 
   home = {
@@ -19,5 +19,4 @@
     packages = with pkgs; [
     ];
   };
-
 }

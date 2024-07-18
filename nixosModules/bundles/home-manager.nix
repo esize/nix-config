@@ -1,15 +1,14 @@
-{ lib
-, config
-, inputs
-, outputs
-, myLib
-, pkgs
-, ...
-}:
-let
-  cfg = config.myNixOS;
-in
 {
+  lib,
+  config,
+  inputs,
+  outputs,
+  myLib,
+  pkgs,
+  ...
+}: let
+  cfg = config.myNixOS;
+in {
   options.myNixOS = {
     userName = lib.mkOption {
       default = "evan";
@@ -26,7 +25,7 @@ in
     };
 
     userNixosSettings = lib.mkOption {
-      default = { };
+      default = {};
       description = ''
         NixOS user settings
       '';
@@ -60,7 +59,7 @@ in
         outputs = inputs.self.outputs;
       };
       users = {
-        ${cfg.userName} = { ... }: {
+        ${cfg.userName} = {...}: {
           imports = [
             (import cfg.userConfig)
             outputs.homeManagerModules.default
@@ -75,7 +74,7 @@ in
         initialPassword = "12345";
         description = cfg.userName;
         shell = pkgs.zsh;
-        extraGroups = [ "libvirtd" "networkmanager" "wheel" ];
+        extraGroups = ["libvirtd" "networkmanager" "wheel"];
       }
       // cfg.userNixosSettings;
   };

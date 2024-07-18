@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   programs.git = {
     enable = true;
     userEmail = "evan@wool.homes";

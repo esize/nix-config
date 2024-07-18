@@ -1,8 +1,9 @@
-{ pkgs
-, inputs
-, config
-, lib
-, ...
+{
+  pkgs,
+  inputs,
+  config,
+  lib,
+  ...
 }: {
   programs.firefox = {
     enable = true;
@@ -39,7 +40,7 @@
             }
           ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = [ "@n" ];
+          definedAliases = ["@n"];
         };
       };
 

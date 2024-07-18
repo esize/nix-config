@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, modulesPath
-, outputs
-, ...
+{
+  pkgs,
+  lib,
+  modulesPath,
+  outputs,
+  ...
 }: {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
@@ -18,7 +19,7 @@
       "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = [ "networkmanager" "wheel" ];
+          extraGroups = ["networkmanager" "wheel"];
         };
       };
     };
@@ -34,5 +35,5 @@
     git
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

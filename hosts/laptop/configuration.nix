@@ -1,16 +1,17 @@
-{ config
-, pkgs
-, lib
-, inputs
-, outputs
-, system
-, myLib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  outputs,
+  system,
+  myLib,
+  ...
 }: {
   imports =
     [
       ./hardware-configuration.nix
-      (import ./disko.nix { device = "/dev/nvme1n1"; })
+      (import ./disko.nix {device = "/dev/nvme1n1";})
       inputs.disko.nixosModules.default
       "${inputs.nixpkgs-wivrn}/nixos/modules/services/video/wivrn.nix"
     ]
@@ -23,8 +24,8 @@
 
     supportedFilesystems.ntfs = true;
 
-    kernelParams = [ "quiet" "udev.log_level=3" "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1" ];
-    kernelModules = [ "coretemp" "cpuid" "v4l2loopback" ];
+    kernelParams = ["quiet" "udev.log_level=3" "nvidia_drm.fbdev=1" "nvidia_drm.modeset=1"];
+    kernelModules = ["coretemp" "cpuid" "v4l2loopback"];
   };
 
   myNixOS = {
@@ -41,7 +42,7 @@
       "evan" = {
         userConfig = ./home.nix;
         userSettings = {
-          extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "adbusers" "openrazer" ];
+          extraGroups = ["networkmanager" "wheel" "libvirtd" "docker" "adbusers" "openrazer"];
         };
       };
     };
@@ -109,8 +110,9 @@
     package =
       (import inputs.nixpkgs-wivrn {
         system = "${pkgs.system}";
-        config = { allowUnfree = true; };
-      }).wivrn;
+        config = {allowUnfree = true;};
+      })
+      .wivrn;
     # package = inputs.nixpkgs-wivrn.legacyPackages.${pkgs.system}.wivrn;
     enable = true;
     openFirewall = true;
@@ -126,7 +128,7 @@
     # inputs.nixpkgs-wivrn.legacyPackages.${pkgs.system}.wivrn
   ];
 
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.enable = true;
 
   system.stateVersion = "23.11";

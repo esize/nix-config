@@ -1,7 +1,8 @@
-{ pkgs
-, inputs
-, config
-, ...
+{
+  pkgs,
+  inputs,
+  config,
+  ...
 }: {
   programs.rbw = {
     enable = true;
